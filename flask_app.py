@@ -13,7 +13,7 @@ from matplotlib.figure import Figure
 from scipy import stats
 from datetime import datetime
 
-project_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.dirname(os.path.realpath(__file__))
 database_file = "sqlite:///{}".format(
     os.path.join(project_dir, "offerdatabase.db"))
 
