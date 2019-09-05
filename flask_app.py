@@ -71,7 +71,7 @@ def home():
         if not math.isnan(slope):
             the_date = datetime.fromtimestamp(-intercept/slope).date()
 
-    return render_template("home.html", offers=offers, the_date=the_date)
+    return render_template("/templates/home.html", offers=offers, the_date=the_date)
 
 
 @app.route("/update", methods=["POST"])
