@@ -23,13 +23,16 @@ app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 
 db = SQLAlchemy(app)
 
-
 class Offer(db.Model):
     __tablename__ = 'offers'
     date = db.Column(db.String(80), unique=True,
                      nullable=False, primary_key=True)
     placement = db.Column(db.String(3), unique=True,
                           nullable=False, primary_key=False)
+
+if not database_exists(database_file):
+   db.create_all()
+   db.session.commit()
 
 
 def init_db():
@@ -134,9 +137,4 @@ def create_figure():
 
 
 if __name__ == "__main__":
-
     app.run()
-
-    if not database_exists(database_file):
-       db.create_all()
-       db.session.commit()
