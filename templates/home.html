@@ -1,0 +1,37 @@
+<html>
+  <body>
+    <h1>Add offer</h1>
+    <form method="POST" action="/">
+      <input type="date" name="date">
+      <input type="number" name="placement">
+      <input type="submit" value="Add">
+    </form>
+    <p>We get the offer on {{the_date}}.</p>
+    <img src="/plot.png" alt="my plot">
+
+    <h1>Offers</h1>
+    <table>
+      {% for offer in offers %}
+        <tr>
+          <td>
+            Date: {{offer.date}} </br>
+	    Placement: {{offer.placement}}
+          </td>
+          <td>
+            <form method="POST" action="./update" style="display: inline">
+              <input type="hidden" value="{{offer.date}}" name="olddate">
+              <input type="text" value="{{offer.date}}" name="newdate">
+              <input type="submit" value="Update">
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="./delete" style="display: inline">
+              <input type="hidden" value="{{offer.date}}" name="date">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
